@@ -2,7 +2,6 @@ resource "azurerm_lb" "banm_ilb" {          #내부 로드밸런서다~
     name = "banm-ilb"
     location = azurerm_resource_group.banm_rg.location
     resource_group_name = azurerm_resource_group.banm_rg.name
-    sku = "Standard"
 
     frontend_ip_configuration {
         name = "privateIPAddress"
@@ -10,7 +9,7 @@ resource "azurerm_lb" "banm_ilb" {          #내부 로드밸런서다~
         subnet_id = azurerm_subnet.banm_sub3.id
     }
 
-    depends_on = [azurerm_private_dns_zone_virtual_network_link.banm_netlink]
+    //depends_on = [azurerm_private_dns_zone_virtual_network_link.banm_netlink]
 }
 
 resource "azurerm_lb_backend_address_pool" "banm_ilb_backend" {

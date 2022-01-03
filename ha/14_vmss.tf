@@ -10,8 +10,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "banm_vmss" {
     admin_password = "gkwltnsmscjswo1!"
     upgrade_mode = "Automatic"
 
-    platform_fault_domain_count = 1
 
+    platform_fault_domain_count = 1
+    
         /*admin_ssh_key {
             username = "was-vmss"
             public_key = azurerm_ssh_public_key.banm_ssh.public_key
@@ -40,14 +41,13 @@ resource "azurerm_linux_virtual_machine_scale_set" "banm_vmss" {
         name = "subnet03-was"
         primary = true
         subnet_id = azurerm_subnet.banm_sub3.id
-        //load_balancer_backend_address_pool_ids = [ azurerm_lb_backend_address_pool.banm_ilb_backend.id ]
+        load_balancer_backend_address_pool_ids = [ azurerm_lb_backend_address_pool.banm_ilb_backend.id ]
         
       public_ip_address {
       name = "banm-vmsstestip"
         }
       }
     }
-
 }
 
 resource "azurerm_monitor_autoscale_setting" "banm_auto" {
